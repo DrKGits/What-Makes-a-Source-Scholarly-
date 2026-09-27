@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>What Makes a Source Scholarly? | Dr. K's Toolbox</title>
+<style>
+:root{
+  --ink:#26343a; --muted:#5d6a6f; --teal:#0f5a60; --teal2:#1d7f86;
+  --page:#f7f5f0; --paper:#fffefb; --line:#d3e2e3; --mist:#e6f0f1;
+  --red:#c4553f; --redbg:#fbede9; --green:#2e7d5b; --greenbg:#d6eee1;
+  --gold:#dd9f52; --goldbg:#fbeedb; --golddk:#8a5a17;
+  --serif: Georgia, "Times New Roman", serif;
+  --sans: system-ui, "Segoe UI", -apple-system, Roboto, Arial, sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--page);color:var(--ink);font-family:var(--serif);font-size:17.5px;line-height:1.65}
+a{color:var(--teal2)}
+a:focus-visible{outline:3px solid var(--gold);outline-offset:2px;border-radius:3px}
+.wrap{max-width:860px;margin:0 auto;padding:40px 24px 56px}
+p{margin:0 0 .9em}
+
+/* masthead */
+.mast{display:flex;align-items:center;gap:22px;padding-bottom:18px;border-bottom:4px solid var(--teal)}
+.mast img{width:84px;height:84px;border-radius:50%;border:2px solid var(--teal);object-fit:cover;flex:none}
+.brand{font-family:var(--sans);font-size:.85rem;color:var(--teal2);font-weight:600;margin:0 0 2px}
+h1{font-family:var(--sans);color:var(--teal);font-size:clamp(1.8rem,4.6vw,2.6rem);line-height:1.12;margin:0;letter-spacing:-.01em}
+.sub{font-family:var(--sans);color:var(--muted);margin:6px 0 0;font-size:1rem}
+.lede{font-size:1.12rem;margin:26px 0 18px}
+
+/* legend + nav */
+.legend{font-family:var(--sans);font-size:.92rem;background:var(--mist);border-radius:10px;padding:12px 16px;margin:0 0 18px;display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center}
+.legend b{color:var(--teal)}
+.toc{font-family:var(--sans);border:1px solid var(--line);background:var(--paper);border-radius:12px;padding:14px 18px;margin:0 0 8px}
+.toc p{margin:0 0 8px;font-weight:700;color:var(--teal)}
+.toc ol{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:4px 20px;counter-reset:t}
+.toc li{counter-increment:t;font-size:.95rem}
+.toc li::before{content:counter(t);display:inline-grid;place-items:center;width:1.5em;height:1.5em;border-radius:50%;background:var(--teal);color:#fff;font-size:.78rem;font-weight:700;margin-right:8px}
+.toc li:nth-child(3n+2)::before{background:var(--green)}
+.toc li:nth-child(3n)::before{background:var(--gold);color:#3b2a0c}
+.toc a{text-decoration:none;color:var(--ink)}
+.toc a:hover{color:var(--teal2);text-decoration:underline}
+
+/* sections */
+section{padding-top:34px}
+h2{font-family:var(--sans);color:var(--teal);font-size:1.55rem;line-height:1.25;margin:0 0 4px;display:flex;align-items:center;gap:12px}
+h2 .n{flex:none;display:inline-grid;place-items:center;width:36px;height:36px;border-radius:50%;background:var(--teal);color:#fff;font-size:1rem}
+section:nth-of-type(3n+2) h2 .n{background:var(--green)}
+section:nth-of-type(3n) h2 .n{background:var(--gold);color:#3b2a0c}
+.kicker{font-family:var(--sans);color:var(--teal2);font-weight:600;font-size:.95rem;margin:0 0 14px 48px}
+h3{font-family:var(--sans);color:var(--teal);font-size:1.12rem;margin:22px 0 8px}
+
+/* inline marks */
+.cite{color:var(--teal2);font-weight:700}
+.hinge{background:var(--gold);color:#2f2208;font-weight:700;padding:1px 5px;border-radius:4px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.wrapup{background:var(--greenbg);color:#1d4d38;font-weight:700;padding:1px 4px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.x{color:var(--red);font-weight:700}
+.ok{color:var(--green);font-weight:700}
+
+/* example panels */
+.panel{background:var(--paper);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin:0 0 14px}
+.panel .hd{font-family:var(--sans);font-weight:700;color:#fff;padding:9px 16px;display:flex;justify-content:space-between;gap:10px;align-items:baseline;flex-wrap:wrap}
+.panel .hd small{font-size:.74rem;letter-spacing:.06em;opacity:.9}
+.panel .bd{padding:14px 16px}
+.panel .bd .ex{font-style:italic}
+.panel .ft{font-family:var(--sans);font-size:.92rem;color:var(--muted);border-top:1px dashed var(--line);padding:10px 16px 12px}
+.panel .ft b{color:var(--ink)}
+.panel.bad .hd{background:var(--red)} .panel.bad{border-color:#ebc3b9}
+.panel.good .hd{background:var(--green)} .panel.good{border-color:#b9dcc8}
+.panel.warm .hd{background:var(--gold);color:#3b2a0c} .panel.warm{border-color:#efd2a9}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.pair .panel{margin:0}
+
+/* moves */
+.moves{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:6px 0 4px}
+.move{background:var(--mist);border-left:5px solid var(--teal2);border-radius:0 10px 10px 0;padding:14px 16px}
+.move .num{font-family:var(--sans);font-weight:800;color:var(--gold);font-size:1.3rem;line-height:1}
+.move h4{font-family:var(--sans);color:var(--teal);margin:6px 0 6px;font-size:1rem}
+.move p{font-size:.95rem;margin:0 0 .6em}
+.move .test{border-top:1px dashed #b7cfd1;padding-top:8px;font-size:.9rem}
+.move .test p{margin:0 0 .5em}
+.bank{font-family:var(--sans);font-size:.85rem;margin:10px 0 0;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.bank span.w{background:var(--goldbg);border:1px solid #efd2a9;color:var(--golddk);border-radius:999px;padding:3px 11px;font-weight:600}
+
+/* callouts */
+.callout{border-radius:12px;padding:16px 20px;margin:16px 0}
+.callout h3{margin-top:0}
+.callout.mist{background:var(--mist)}
+.callout.caution{background:var(--goldbg);border:2px solid var(--gold);border-left-width:8px}
+.callout.caution h3{color:var(--golddk)}
+.callout ol{margin:0;padding-left:1.3em}
+.callout ol li{margin-bottom:.35em}
+
+/* steps */
+.steps{list-style:none;margin:6px 0 0;padding:0;position:relative}
+.steps::before{content:"";position:absolute;left:17px;top:18px;bottom:24px;width:2px;background:var(--line)}
+.steps>li{position:relative;padding-left:54px;margin-bottom:18px}
+.steps .dot{position:absolute;left:0;top:0;width:36px;height:36px;border-radius:50%;background:var(--teal);color:#fff;font-family:var(--sans);font-weight:700;display:grid;place-items:center}
+.steps h4{font-family:var(--sans);color:var(--teal);font-size:1.05rem;margin:5px 0 6px}
+.quote{background:var(--paper);border:1px solid var(--line);border-left:5px solid var(--teal);border-radius:0 10px 10px 0;padding:12px 16px;font-style:italic}
+
+/* exhibit list */
+.changes{counter-reset:c;list-style:none;padding:0;margin:0}
+.changes li{counter-increment:c;position:relative;padding-left:38px;margin-bottom:12px}
+.changes li::before{content:counter(c);position:absolute;left:0;top:2px;width:26px;height:26px;border-radius:50%;background:var(--teal2);color:#fff;font-family:var(--sans);font-weight:700;font-size:.85rem;display:grid;place-items:center}
+
+.never{font-family:var(--sans);font-size:1.45rem;font-weight:700;color:var(--teal);text-align:center;margin:22px 0 4px}
+
+/* references */
+.refs{border-top:1px dashed var(--line);margin-top:36px;padding-top:18px}
+.refs h2{font-size:1.2rem}
+.refs p{padding-left:2.2em;text-indent:-2.2em;font-size:.95rem;margin-bottom:.6em}
+
+footer{font-family:var(--sans);font-size:.88rem;color:var(--muted);border-top:2px solid var(--line);margin-top:30px;padding-top:14px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 20px}
+
+@media (max-width:720px){
+  body{font-size:16.5px}
+  .pair,.moves{grid-template-columns:1fr}
+  .kicker{margin-left:0}
+  .mast img{width:64px;height:64px}
+}
+@media print{
+  body{background:#fff;font-size:11.5pt}
+  .toc{display:none}
+  section{break-inside:auto}
+  .panel,.move,.callout,.steps>li{break-inside:avoid}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  a{color:var(--ink)}
+}
+</style>
+<style>
+.chk{list-style:none;padding:0;margin:0 0 .6em}
+.chk li{padding-left:1.5em;position:relative;margin-bottom:.35em}
+.good .chk li::before{content:"\2713";position:absolute;left:0;color:var(--green);font-weight:700}
+.bad .chk li::before{content:"\2717";position:absolute;left:0;color:var(--red);font-weight:700}
+.ladder{font-family:var(--sans);display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:center;margin:26px 0 0;font-weight:700;color:var(--teal)}
+.ladder span.s{background:var(--mist);border:1px solid var(--line);border-radius:999px;padding:6px 14px}
+.ladder span.a{color:var(--gold);font-size:1.2rem}
+.def{background:var(--paper);border:1px solid var(--line);border-left:5px solid var(--gold);border-radius:0 10px 10px 0;padding:12px 16px;margin:0 0 16px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="mast">
+  <img src="data:image/jpeg;base64,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" alt="Dr. K">
+  <div>
+    <p class="brand">Dr. K's Toolbox &middot; Graduate Writing Support</p>
+    <h1>What Makes a Source "Scholarly"?</h1>
+    <p class="sub">Peer-reviewed vs. everything else</p>
+  </div>
+</header>
+
+<p class="lede">Not everything with an author and a reference list counts. A <b>scholarly source</b> is written <em>by experts</em>, <em>for experts</em>, and <em>reviewed by other experts</em> before it ever reaches you. That last part (the reviewing) is what "scholarly source" is really asking for. Here is how to tell the real thing from a convincing lookalike.</p>
+
+<nav class="toc" aria-label="On this page">
+  <p>On this page</p>
+  <ol>
+    <li><a href="#is-isnt">What a scholarly source is (and is not)</a></li>
+    <li><a href="#peer-review">Peer-reviewed vs. not peer-reviewed</a></li>
+    <li><a href="#textbooks">Why a textbook is not always scholarly</a></li>
+  </ol>
+</nav>
+
+<section id="is-isnt">
+  <h2><span class="n">1</span>What a scholarly source is (and is not)</h2>
+  <p class="kicker">The real thing vs. a convincing lookalike</p>
+  <div class="pair">
+    <div class="panel good">
+      <div class="hd">&#10003; What it has <small>LOOK FOR THIS</small></div>
+      <div class="bd">
+        <ul class="chk">
+          <li>Written by named experts with credentials in the field</li>
+          <li>Published in an academic journal or by a university or academic press</li>
+          <li>Includes original research, a methods section or theoretical argument, and a full reference list</li>
+          <li>Aimed at scholars and students, not the general public</li>
+        </ul>
+      </div>
+      <div class="ft"><b>The tell:</b> you can trace every claim to evidence, and other researchers are expected to build on or challenge it.</div>
+    </div>
+    <div class="panel bad">
+      <div class="hd">&#10007; What it is not <small>STAY CAUTIOUS</small></div>
+      <div class="bd">
+        <ul class="chk">
+          <li>Magazine and news articles</li>
+          <li>Blog posts</li>
+          <li>Most websites (even GCU's)</li>
+          <li>Marketing content and opinion pieces</li>
+        </ul>
+        <p style="margin:0">These can be well-written and even accurate, but they have not been vetted by a panel of experts, and their goal is often to inform quickly or persuade, not to withstand scrutiny.</p>
+      </div>
+      <div class="ft"><b>The tell:</b> no methods, no citations you can chase down, and a writer whose job is readership, not rigor.</div>
+    </div>
+  </div>
+</section>
+
+<section id="peer-review">
+  <h2><span class="n">2</span>Peer-reviewed vs. not peer-reviewed</h2>
+  <p class="kicker">Quality control by the author's toughest audience</p>
+  <div class="moves">
+    <div class="move">
+      <div class="num">1</div>
+      <h4>What "peer review" means</h4>
+      <p>Before publication, other experts read the work anonymously and can demand fixes, or reject it outright. It is quality control by the author's toughest audience: their peers.</p>
+    </div>
+    <div class="move">
+      <div class="num">2</div>
+      <h4>Peer-reviewed = strongest</h4>
+      <p>A study in a peer-reviewed journal has cleared that gauntlet. This is the gold standard your assignments want. Look for "refereed" or "peer-reviewed" in the database filters.</p>
+    </div>
+    <div class="move">
+      <div class="num">3</div>
+      <h4>Scholarly &ne; always reviewed</h4>
+      <p>Some scholarly work (conference papers, dissertations, some book chapters) is credible but not formally peer-reviewed. Useful, but check what your rubric requires.</p>
+    </div>
+  </div>
+</section>
+
+<section id="textbooks">
+  <h2><span class="n">3</span>Why a textbook is not always scholarly</h2>
+  <p class="kicker">Tertiary sources summarize; primary sources prove</p>
+  <div class="callout caution">
+    <p>Textbooks feel authoritative: they are thick, cited, and written by professors. But a textbook <b>summarizes</b> findings; it rarely presents original research, and most are not peer-reviewed the way journal articles are. They are <b>tertiary sources</b>: great for background and orientation, weak as the scholarly evidence a graduate paper is supposed to lean on.</p>
+    <p style="margin:0">Use them to learn the terrain, then cite the primary studies they point you toward.</p>
+  </div>
+  <div class="pair">
+    <div class="panel bad">
+      <div class="hd">&#10007; The trap</div>
+      <div class="bd"><p>Citing your textbook as proof of a claim: <span style="background:var(--redbg);color:#8e3322;font-weight:700;padding:1px 4px">"Northouse (2022) says transformational leadership works."</span></p></div>
+      <div class="ft">That is a summary of other people's research, one step removed from the evidence.</div>
+    </div>
+    <div class="panel good">
+      <div class="hd">&#10003; Better</div>
+      <div class="bd"><p>Follow the textbook to its sources. <span class="wrapup">Find the original Bass or Avolio study it summarized and cite that.</span></p></div>
+      <div class="ft">Now you are citing the research itself, which is exactly what the rubric rewards.</div>
+    </div>
+  </div>
+  <div class="ladder" aria-label="The test">
+    <span>The test:</span>
+    <span class="s">Expert-written</span><span class="a">&rarr;</span>
+    <span class="s">Peer-reviewed</span><span class="a">&rarr;</span>
+    <span class="s">Traceable evidence</span>
+  </div>
+</section>
+
+<footer>
+  <span>Dr. K's Toolbox &middot; Graduate Writing Support</span>
+  <span><a href="mailto:karen.degenhart@my.gcu.edu">karen.degenhart@my.gcu.edu</a> &middot; <a href="https://outlook.office.com/bookwithme/user/9543bf8bd8724490b3a56359d0bd2cbc@my.gcu.edu/meetingtype/D1lHmH8fSkWs-wKpWqjEgw2?anonymous&amp;ismsaljsauthenabled&amp;ep=mlink" target="_blank" rel="noopener">Book a meeting with Dr. K</a></span>
+</footer>
+
+</div>
+</body>
+</html>
